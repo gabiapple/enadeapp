@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  instituicao: one
+  curso: one
+  nota: 1.5
+  media_notas: 1.5
+
+two:
+  instituicao: two
+  curso: two
+  nota: 1.5
+  media_notas: 1.5
