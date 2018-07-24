@@ -1,0 +1,64 @@
+<script type="text/javascript">
+  function addNewRow(){
+    $("#curso-table").each(function () {
+        
+      var tds = '<tr>';
+      jQuery.each($('tr:last td', this), function () {
+          tds += '<td>' + $(this).html() + '</td>';
+      });
+      tds += '</tr>';
+      if ($('tbody', this).length > 0) {
+          $('tbody', this).append(tds);
+      } else {
+          $(this).append(tds);
+      }
+    });
+  }
+</script>
+
+<div class="container">
+  <h1>Cadastro de Perfomance</h1>
+  <%= form_tag do |form| %>
+    <div class="row">
+      <div class="col">
+        <label>Instituição: </label>
+        <%= collection_select(:instituicao, :instituicao_id, Instituicao.all, :id, :sigla) %>                    
+      </div>
+      <div class="col">
+        <label>Nota Geral: </label>
+        <input type="text" id="instituicao_nota" value=""></input>
+      </div>
+    </div>
+    <table id="curso-table" class="table table-striped table-bordered" style="width:100%">
+      <thead>
+        <tr>
+          <th>Curso</th>
+          <th>Nota do Curso</th>
+          <th>Média dos alunos</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td>
+              <%= collection_select(:curso, :curso_id, Curso.all, :id, :descricao) %>
+            </td>
+            <td>
+              <%= text_field_tag(:curso_nota) %>
+            </td>
+            <td>
+              <%= text_field_tag(:curso_media) %>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+    <p align="right">
+      <button type="button" id="novo_curso" onclick="addNewRow()" class="btn-default">
+        Adicionar outro curso
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button>    
+    </p>
+    <p>
+     <button type="submit" class="btn-info">Salvar</button>
+    </p>
+  <% end %>
+</div>
