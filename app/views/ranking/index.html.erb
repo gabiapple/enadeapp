@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag "application" %>
+
+<div class="container">
+  <h1>Ranking</h1>
+  <table id="example" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Instituição</th>
+        <th>Curso</th>
+        <th>Nota Geral</th>
+        <th>Nota do Curso</th>
+        <th>Média dos alunos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @perfomances.each do |perfomance| %>
+        <tr>
+          <td><%= perfomance.id %></td>
+          <td><%= perfomance.instituicao_descricao %></td>
+          <td><%= perfomance.instituicao_nota %></td>
+          <td><%= perfomance.curso.descricao %></td>
+          <td><%= perfomance.nota %></td>
+          <td><%= perfomance.media_notas %></td>
+        </tr>
+      <% end -%>
+
+    </tbody>
+  </table>
+</div>
